@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { I_FORM_FIELD, I_FIELD_CSS } from '../type';
 
-export const TextInput: React.FC<I_FORM_FIELD> = ({
+interface I_TEXT_FIELD extends I_FORM_FIELD {
+	setData?: any;
+}
+
+export const TextInput: React.FC<I_TEXT_FIELD> = ({
 	label = '',
 	name = '',
 	defaultValue = '',
 	placeholder = '',
 	typeControl = 'text',
-	css: { css_group = '', css_label = '', css_control = '', css_icon = '' } = {}
+	css: { css_group = '', css_label = '', css_control = '', css_icon = '' } = {},
+	setData = function() {}
 }) => {
 	return (
 		<div className={css_group}>
@@ -21,8 +26,9 @@ export const TextInput: React.FC<I_FORM_FIELD> = ({
 				type={typeControl}
 				className={css_control}
 				name={name}
-				value={defaultValue}
+				defaultValue={defaultValue}
 				placeholder={placeholder}
+				onChange={setData}
 			/>
 		</div>
 	);

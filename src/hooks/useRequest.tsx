@@ -23,7 +23,12 @@ export function useRequest() {
 				text: ''
 			});
 			if (result.ok) {
-				return result;
+				const { error = null } = result.requestBody;
+				if (error) {
+					throw new Error(errorText);
+				} else {
+					return result;
+				}
 			} else throw new Error(errorText);
 		} catch (e) {
 			setLoading({

@@ -96,7 +96,9 @@ const config: I_FORM = {
 	],
 	url: {
 		direction:
-			'http://trakt.travelsoft.by/local/components/travelsoft/booking.search_form/templates/excursiontours/ajax/directions.php'
+			'http://trakt.travelsoft.by/local/components/travelsoft/booking.search_form/templates/transfers/ajax/directions.php',
+		dates:
+			'http://trakt.travelsoft.by/local/components/travelsoft/booking.search_form/templates/transfer/ajax/directions.php'
 	}
 };
 function initRender() {

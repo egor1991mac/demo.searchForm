@@ -24,6 +24,7 @@ export interface I_FORM {
 	fields: Array<I_FORM_FIELD>;
 	url: {
 		direction: string;
+		dates: string;
 	};
 }
 
@@ -40,7 +41,7 @@ export interface I_HTTP_RESPONSE<T> extends Response {
 	requestBody?: T;
 }
 
-export interface I_DIRECTION {
+export interface I_TOUR_DIRECTION {
 	direction: {
 		id: string;
 		link: string;
@@ -55,4 +56,37 @@ export interface I_DIRECTION {
 			name: string;
 		};
 	};
+}
+export interface I_TRANSFER_DIRECTION {
+	direction: {
+		[key: number]: number[];
+	};
+	error: boolean;
+	points: {
+		[key: number]: {
+			ID: string | number;
+			NAME: string;
+		};
+	};
+}
+
+export interface I_POINTS {
+	[key: number]: {
+		ID: string | number;
+		NAME: string;
+	};
+}
+
+export interface I_AUTOCOMPLEATE {
+	id: number;
+	name: string;
+}
+
+export interface I_REQUESTBODY {
+	sessionid: string;
+	from: number;
+	to: number;
+	date_from: string;
+	date_to: string;
+	pessanger: number[];
 }
