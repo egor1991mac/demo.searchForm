@@ -3,6 +3,10 @@ export interface I_FIELD_CSS {
 	css_label?: string;
 	css_control?: string;
 	css_icon?: string;
+	css_popper?: string;
+	css_select?: string;
+	css_option?: string;
+	css_box?: string;
 }
 
 export interface I_FORM_FIELD {
@@ -70,11 +74,15 @@ export interface I_TRANSFER_DIRECTION {
 	};
 }
 
-export interface I_POINTS {
-	[key: number]: {
-		ID: string | number;
-		NAME: string;
-	};
+export type I_POINTS = Array<I_POINT>;
+
+export interface I_POINT {
+	ID: string | number;
+	NAME: string;
+}
+
+export interface I_DIRECTION {
+	[key: number]: number[];
 }
 
 export interface I_AUTOCOMPLEATE {
@@ -84,9 +92,9 @@ export interface I_AUTOCOMPLEATE {
 
 export interface I_REQUESTBODY {
 	sessionid: string;
-	from: number;
-	to: number;
+	from: I_POINT;
+	to: I_POINT;
 	date_from: string;
-	date_to: string;
+	date_to?: string | any;
 	pessanger: number[];
 }

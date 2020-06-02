@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@popperjs/core": "^2.4.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -10,9 +11,17 @@
     "@types/node": "^12.12.42",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
+    "date-fns": "^2.14.0",
+    "moment": "^2.26.0",
+    "qs": "^6.9.4",
     "react": "^16.13.1",
+    "react-awesome-reveal": "^2.4.2",
+    "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
+    "react-popper": "^2.2.3",
+    "react-reveal": "^1.2.2",
     "react-scripts": "3.4.1",
+    "react-transition-group": "^4.4.1",
     "typescript": "^3.7.5"
   },
   "scripts": {
