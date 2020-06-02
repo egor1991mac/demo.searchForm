@@ -6,6 +6,10 @@ import dateFnsParse from 'date-fns/parse';
 import isDate from 'date-fns/isDate';
 
 export function useCalendarb(initData = [ new Date() ], min) {
+	const modifires = {
+		sunday: { daysOfWeek: [ 0, 6 ] }
+		//hilight: toDateArray(initData)
+	};
 	const formatDate = (date) => {
 		return dateFnsFormat(date, 'dd.MM.yyyy');
 	};
@@ -70,5 +74,5 @@ export function useCalendarb(initData = [ new Date() ], min) {
 		[ initData ]
 	);
 
-	return { getDisableDate, getMaxDate, getMinDate, getAllDates, formatDate };
+	return { getDisableDate, getMaxDate, getMinDate, getAllDates, formatDate, modifires };
 }

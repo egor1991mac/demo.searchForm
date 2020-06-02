@@ -7,7 +7,7 @@ import { Fade } from 'react-awesome-reveal';
 import { useClickOutside } from '../hooks/useClickOutside';
 import { TextInput } from './textInput';
 import { useCalendarb } from '../hooks/useCalendarb';
-import { format } from 'date-fns';
+import * as locale from './locale';
 
 export const DatePicker = ({
 	field = null,
@@ -30,7 +30,7 @@ export const DatePicker = ({
 		!disabled && setOpen(true);
 	};
 
-	const { getMinDate, getMaxDate, getDisableDate, formatDate } = useCalendarb(dates, new Date());
+	const { getMinDate, getMaxDate, getDisableDate, formatDate, modifires } = useCalendarb(dates, new Date());
 
 	return (
 		<div className={css.css_box} {...attributes.popper}>
@@ -43,6 +43,11 @@ export const DatePicker = ({
 						<div ref={refContainer}>
 							<div ref={setPopperElement} style={styles.popper} className={css.css_popper}>
 								<DayPicker
+									months={locale.MONTHS}
+									firstDayOfWeek={1}
+									modifiers={modifires}
+									weekdaysLong={locale.WEEKDAYS_SHORT}
+									weekdaysShort={locale.WEEKDAYS_SHORT}
 									month={getMinDate()}
 									disabledDays={getDisableDate()}
 									selectedDays={value}
