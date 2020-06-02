@@ -10,6 +10,7 @@ export const TextInput= ({
 	placeholder = '',
 	typeControl = 'text',
 	disabled=false,
+	icon='',
 	css: { css_label = '', css_control = '', css_icon = '' } = {},
 	onChange = function() {},
 	onClick = function() {},
@@ -21,7 +22,7 @@ export const TextInput= ({
 			
 			{label && (
 				<label htmlFor="" className={css_label}>
-					{css_icon.length ? <i className={css_icon}  /> : null}
+					{icon.length ? <i className={[css_icon,icon].join(' ')}  /> : null}
 					{label}
 				</label>
 			)}

@@ -32,7 +32,8 @@ const config = {
 			name: 'from',
 			label: 'Откуда',
 			defaultValue: '',
-			placeholder: 'text placholder'
+			placeholder: 'text placholder',
+			icon: '123'
 		},
 		{
 			type: 'AC',
@@ -40,7 +41,8 @@ const config = {
 			name: 'to',
 			label: 'Куда',
 			defaultValue: '',
-			placeholder: 'text placholder'
+			placeholder: 'text placholder',
+			icon: '123'
 		},
 		{
 			type: 'DP',
@@ -48,7 +50,8 @@ const config = {
 			name: 'date_from',
 			label: 'Дата выезда',
 			defaultValue: '',
-			placeholder: 'text placholder'
+			placeholder: 'text placholder',
+			icon: ''
 		},
 		{
 			type: 'DUR',
@@ -56,7 +59,8 @@ const config = {
 			name: 'duration',
 			label: 'Продолжительность',
 			defaultValue: '',
-			placeholder: 'text placholder'
+			placeholder: 'text placholder',
+			icon: ''
 		},
 		{
 			type: 'COUNT',
@@ -66,6 +70,7 @@ const config = {
 			defaultValue: { adults: 1, children: 0, childrenAge: [] },
 			placeholder: 'text placholder',
 			maxAge: 12,
+			icon: '',
 			popup: [
 				{
 					key: 'adults', // !!! Обязательное поле
@@ -83,7 +88,8 @@ const config = {
 		{
 			type: 'SUBMIT',
 			typeControl: 'submit',
-			defaultValue: 'Искать'
+			defaultValue: 'Искать',
+			icon: ''
 		}
 	],
 	url: {

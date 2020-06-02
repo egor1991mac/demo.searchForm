@@ -67,14 +67,14 @@ export default function({
 		setData({ ...value, childrenAge });
 	};
 	return (
-		<div className={css.css_box} ref={refContainer} {...attributes.popper}>
+		<div className={css.css_box} {...attributes.popper}>
 			<div ref={setTargetElement} className={css.css_group} data-disabled={disabled}>
 				<TextInput {...field} onClick={handleOpen} value={value.adults + value.children} disabled={disabled} />
 			</div>
 			{open &&
-				React.createP(
+				createPortal(
 					<Fade>
-						<div>
+						<div ref={refContainer}>
 							<div ref={setPopperElement} style={styles.popper} className={css.css_popper}>
 								{popup.map(({ key, title, subtitle, defaultValue }, index) => (
 									<div key={key} className={css.css_counter_popupRow}>
@@ -116,7 +116,8 @@ export default function({
 								) : null}
 							</div>
 						</div>
-					</Fade>
+					</Fade>,
+					document.getElementById('transferPortal')
 				)}
 		</div>
 	);

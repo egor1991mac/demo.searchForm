@@ -21,6 +21,7 @@ export const AutoCompleate = ({ field, css, setData, getData, options, value, di
 	///select
 	const handleSelect = (value) => {
 		setData(value);
+		setOpen(false);
 	};
 
 	//open
@@ -34,7 +35,7 @@ export const AutoCompleate = ({ field, css, setData, getData, options, value, di
 	useClickOutside(refContainer, () => setOpen(false));
 
 	return (
-		<div className={css.css_box} ref={refContainer} {...attributes.popper}>
+		<div className={css.css_box} {...attributes.popper}>
 			<div ref={setTargetElement} className={css.css_group} data-disabled={disabled}>
 				<TextInput
 					disabled={disabled}
@@ -46,15 +47,17 @@ export const AutoCompleate = ({ field, css, setData, getData, options, value, di
 				/>
 			</div>
 			{options &&
-			open && (
-				<Fade>
-					<div>
-						<div ref={setPopperElement} style={styles.popper} className={css.css_popper}>
-							<Select options={options} css={css} onSelect={handleSelect} />
+				open &&
+				createPortal(
+					<Fade>
+						<div ref={refContainer}>
+							<div ref={setPopperElement} style={styles.popper} className={css.css_popper}>
+								<Select options={options} css={css} onSelect={handleSelect} />
+							</div>
 						</div>
-					</div>
-				</Fade>
-			)}
+					</Fade>,
+					document.getElementById('transferPortal')
+				)}
 		</div>
 	);
 };

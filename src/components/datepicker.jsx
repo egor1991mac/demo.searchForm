@@ -33,24 +33,26 @@ export const DatePicker = ({
 	const { getMinDate, getMaxDate, getDisableDate, formatDate } = useCalendarb(dates, new Date());
 
 	return (
-		<div className={css.css_box} ref={refContainer} {...attributes.popper}>
+		<div className={css.css_box} {...attributes.popper}>
 			<div ref={setTargetElement} className={css.css_group} data-disabled={disabled}>
 				<TextInput {...field} css={css} onClick={handleOpen} value={formatDate(value)} disabled={disabled} />
 			</div>
-			{open && (
-				<Fade>
-					<div>
-						<div ref={setPopperElement} style={styles.popper} className={css.css_popper}>
-							<DayPicker
-								month={getMinDate()}
-								disabledDays={getDisableDate()}
-								selectedDays={value}
-								onDayClick={(day) => setData(day)}
-							/>
+			{open &&
+				createPortal(
+					<Fade>
+						<div ref={refContainer}>
+							<div ref={setPopperElement} style={styles.popper} className={css.css_popper}>
+								<DayPicker
+									month={getMinDate()}
+									disabledDays={getDisableDate()}
+									selectedDays={value}
+									onDayClick={(day) => setData(day)}
+								/>
+							</div>
 						</div>
-					</div>
-				</Fade>
-			)}
+					</Fade>,
+					document.getElementById('transferPortal')
+				)}
 		</div>
 	);
 };

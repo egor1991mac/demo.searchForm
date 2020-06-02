@@ -56,12 +56,12 @@ export const Fields = () => {
 	};
 
 	const setData = (key) => (data) => {
+		console.log(data);
 		setBody({ ...body, [key]: data });
 		if (key == 'to' && Object.values(body.from).length && Object.values(data).length) {
 			getDates(body.from.KEY, data.KEY);
 		}
 	};
-	console.log(body);
 
 	return (
 		<form autoComplete="nope" id="#transferForm">
