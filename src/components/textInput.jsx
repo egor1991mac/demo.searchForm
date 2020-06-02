@@ -3,7 +3,7 @@ import { I_FORM_FIELD, I_FIELD_CSS, I_POINT } from '../type';
 
 
 
-export const TextInput= ({
+export const TextInput = React.forwardRef(({
 	label = '',
 	name = '',
 	defaultValue = '',
@@ -15,7 +15,7 @@ export const TextInput= ({
 	onChange = function() {},
 	onClick = function() {},
 	value=''
-}) => {
+},ref) => {
 	
 	return (
 		<>
@@ -27,6 +27,7 @@ export const TextInput= ({
 				</label>
 			)}
 			<input
+				ref={ref}
 				disabled={disabled}
 				autoComplete="off"
 				type={typeControl}
@@ -40,4 +41,6 @@ export const TextInput= ({
 			/>
 		</>
 	);
-};
+});
+
+

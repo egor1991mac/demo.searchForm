@@ -76,7 +76,7 @@ export const Fields = () => {
 	};
 
 	return (
-		<form autoComplete="nope" id="#transferForm">
+		<form autoComplete="nope" id="transferForm">
 			{fields.map((field, index) => {
 				switch (field.type) {
 					case 'AC':

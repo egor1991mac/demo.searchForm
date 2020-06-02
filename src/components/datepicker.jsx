@@ -33,10 +33,16 @@ export const DatePicker = ({
 	const { getMinDate, getMaxDate, getDisableDate, formatDate, modifires } = useCalendarb(dates, new Date());
 
 	return (
-		<div className={css.css_box} {...attributes.popper}>
-			<div ref={setTargetElement} className={css.css_group} data-disabled={disabled}>
-				<TextInput {...field} css={css} onClick={handleOpen} value={formatDate(value)} disabled={disabled} />
-			</div>
+		<div className={css.css_group} data-disabled={disabled} {...attributes.popper}>
+			<TextInput
+				ref={setTargetElement}
+				{...field}
+				css={css}
+				onClick={handleOpen}
+				value={formatDate(value)}
+				disabled={disabled}
+			/>
+
 			{open &&
 				createPortal(
 					<Fade>

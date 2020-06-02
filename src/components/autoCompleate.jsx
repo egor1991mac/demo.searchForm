@@ -32,20 +32,22 @@ export const AutoCompleate = ({ field, css, setData, getData, options, value, di
 
 	//click outside
 	const refContainer = useRef(null);
-	useClickOutside(refContainer, () => setOpen(false));
+	useClickOutside(refContainer, () => {
+		setOpen(false);
+	});
 
 	return (
-		<div className={css.css_box} {...attributes.popper}>
-			<div ref={setTargetElement} className={css.css_group} data-disabled={disabled}>
-				<TextInput
-					disabled={disabled}
-					{...field}
-					css={css}
-					onChange={handleChange}
-					onClick={handleOpen}
-					value={value ? value.NAME : ''}
-				/>
-			</div>
+		<div className={css.css_group} {...attributes.popper} data-disabled={disabled}>
+			<TextInput
+				ref={setTargetElement}
+				disabled={disabled}
+				{...field}
+				css={css}
+				onChange={handleChange}
+				onClick={handleOpen}
+				value={value ? value.NAME : ''}
+			/>
+
 			{options &&
 				open &&
 				createPortal(

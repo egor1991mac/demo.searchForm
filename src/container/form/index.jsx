@@ -9,10 +9,10 @@ export const Form = (props) => {
 	const [ requestBody, setRequestBody ] = useState();
 
 	return (
-		<div>
+		<>
 			<FormContext.Provider value={props}>
 				<Fields />
 			</FormContext.Provider>
-		</div>
+		</>
 	);
 };

@@ -67,10 +67,15 @@ export const Counter = ({
 		setData({ ...value, childrenAge });
 	};
 	return (
-		<div className={css.css_box} {...attributes.popper}>
-			<div ref={setTargetElement} className={css.css_group} data-disabled={disabled}>
-				<TextInput {...field} onClick={handleOpen} value={value.adults + value.children} disabled={disabled} />
-			</div>
+		<div className={css.css_group} data-disabled={disabled} {...attributes.popper}>
+			<TextInput
+				ref={setTargetElement}
+				{...field}
+				onClick={handleOpen}
+				value={value.adults + value.children}
+				disabled={disabled}
+				css={css}
+			/>
 			{open &&
 				createPortal(
 					<Fade>
