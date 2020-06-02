@@ -8,7 +8,7 @@ import { useCalendarb } from '../hooks/useCalendarb';
 import { max } from 'moment';
 import { generateArray } from '../api';
 
-export default function({
+export const Counter = ({
 	css,
 	field,
 	field: { popup, popupSubContent, maxAge },
@@ -16,7 +16,7 @@ export default function({
 	value: { adults = 1, children = 0, childrenAge = [] },
 	setData,
 	disabled = false
-}) {
+}) => {
 	//popup settings
 	const [ targetElement, setTargetElement ] = useState(null);
 	const [ popperElemet, setPopperElement ] = useState(null);
@@ -121,4 +121,4 @@ export default function({
 				)}
 		</div>
 	);
-}
+};

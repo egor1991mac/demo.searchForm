@@ -5,15 +5,20 @@ import { FormContext } from './context';
 import { AutoCompleate } from '../../components/autoCompleate';
 import { TextInput } from '../../components/textInput';
 import { useRequest } from '../../hooks/useRequest';
-import { http, filtredPoints, getDefaultValue } from '../../api';
+import { http, filtredPoints, getDefaultValue, generateBodyRequestForm } from '../../api';
 import dateFnsFormat from 'date-fns/format';
-
 import { DatePicker } from '../../components/datepicker';
-import Counter from '../../components/Counter';
+import { Counter } from '../../components/Counter';
 
 export const Fields = () => {
 	//props
-	const { fields = [], url: { url_direction = '', url_date = '' }, sessid = '', css } = useContext(FormContext);
+	const {
+		fields = [],
+		url: { url_direction = '', url_date = '', url_redirect = '' },
+		request_modifire = '',
+		sessid = '',
+		css
+	} = useContext(FormContext);
 	//requset hook
 	const { request, loading, error } = useRequest();
 
@@ -44,6 +49,7 @@ export const Fields = () => {
 		getDataPoints();
 	}, []);
 
+	//dates
 	const [ dates, setDates ] = useState([ dateFnsFormat(new Date(), 'dd.MM.yyyy') ]);
 
 	const getDates = async (from, to) => {
@@ -54,13 +60,19 @@ export const Fields = () => {
 		);
 		setDates(result.dates);
 	};
-
+	//set Body
 	const setData = (key) => (data) => {
-		console.log(data);
 		setBody({ ...body, [key]: data });
 		if (key == 'to' && Object.values(body.from).length && Object.values(data).length) {
 			getDates(body.from.KEY, data.KEY);
 		}
+	};
+
+	//submit
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const url = generateBodyRequestForm(body, request_modifire, url_redirect, sessid);
+		window.location.href = url;
 	};
 
 	return (
@@ -120,14 +132,19 @@ export const Fields = () => {
 							/>
 						);
 					case 'SUBMIT':
+						const { css_icon = '' } = css;
+						const { icon = '' } = field;
 						return (
 							<div className={css.css_box}>
-								<input
+								<button
 									disabled={!body.from && !body.to ? true : false}
 									type={field.typeControl}
 									className={css.css_submit}
-									value={field.defaultValue}
-								/>
+									onClick={handleSubmit}
+								>
+									{icon.length ? <i className={[ css_icon, icon ].join(' ')} /> : null}
+									{field.defaultValue}
+								</button>
 							</div>
 						);
 				}

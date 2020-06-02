@@ -1,5 +1,5 @@
-import { fi } from "date-fns/locale";
-
+import { stringify } from 'qs';
+import dateFnsFormat from 'date-fns/format';
 export async function http(request) {
 
     const response = await fetch(request);
@@ -52,4 +52,35 @@ export function generateArray(maxLength) {
         array.push(i);
     }
     return array;
+}
+const data = {
+
+    sessid: '',
+    from: null,
+    to: null,
+    date_from: new Date(),
+    date_to: null,
+    pessanger: {
+        adults: 1,
+        children: 0,
+        childrenAge: []
+    }
+
+}
+export function generateBodyRequestForm(obj, str, url = '', sessid = '') {
+    const body = {};
+    for (let key in obj) {
+        if (obj[key]) {
+            if (key.indexOf('date_') != -1) {
+                body[key] = dateFnsFormat(obj[key], 'dd.MM.yyyy');
+            } else {
+                body[key] = obj[key];
+            }
+
+        }
+    }
+
+    return `${url}/?sessid=${sessid}&${stringify({
+        [str]: body
+    })}`;
 }

@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 const config = {
 	type: 'excursion',
-	sessionid: '',
+	sessid: '',
 	css: {
 		css_group: 'form-group',
 		css_label: '',
@@ -88,18 +88,20 @@ const config = {
 		{
 			type: 'SUBMIT',
 			typeControl: 'submit',
-			defaultValue: 'Искать',
-			icon: ''
+			defaultValue: 'Искать'
 		}
 	],
 	url: {
 		url_direction:
 			'http://trakt.travelsoft.by/local/components/travelsoft/booking.search_form/templates/transfers/ajax/directions.php',
 		url_date:
-			'http://trakt.travelsoft.by/local/components/travelsoft/booking.search_form/templates/transfers/ajax/dates.php'
-	}
+			'http://trakt.travelsoft.by/local/components/travelsoft/booking.search_form/templates/transfers/ajax/dates.php',
+		url_redirect: '/transfer'
+	},
+	request_modifire: 'travelbooking',
+	submit: false
 };
-function initRender() {
+function initRenderTransfer(config) {
 	ReactDOM.render(
 		<React.StrictMode>
 			<Form {...config} />
@@ -107,7 +109,7 @@ function initRender() {
 		document.getElementById('root')
 	);
 }
-initRender();
+window.initRenderTransfer = initRenderTransfer(config);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
