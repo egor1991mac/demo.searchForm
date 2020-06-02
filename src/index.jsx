@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Form } from './container/form';
-import * as serviceWorker from './serviceWorker';
+//import * as serviceWorker from './serviceWorker';
 
 const config = {
 	type: 'excursion',
@@ -106,12 +106,12 @@ function initRenderTransfer(config) {
 		<React.StrictMode>
 			<Form {...config} />
 		</React.StrictMode>,
-		document.getElementById('root')
+		document.getElementById('#transferFormRoot')
 	);
 }
-window.initRenderTransfer = initRenderTransfer(config);
+window.initRenderTransfer = initRenderTransfer;
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//serviceWorker.unregister();
